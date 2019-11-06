@@ -6,7 +6,8 @@ module.exports = {
   findSteps,
   add,
   update,
-  remove
+  remove,
+  addStep
 }
 
 const find = () => {
@@ -31,4 +32,8 @@ const update = (changes, id) => {
 
 const remove = (id) => {
   return db('schemes').where({ id }).del();
+}
+
+const addStep = (step, scheme_id) => {
+  return db('steps').insert({ scheme_id, ...step });
 }
